@@ -1,0 +1,125 @@
+<!-- Form Validation using JS -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ body
+ {
+    background-image: url(images/image_2023-05-23_01-53-23.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+input[type=text], select, textarea {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(223, 211, 223);
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=tel], input[type=email] {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(223, 211, 223);
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #e3125b;
+  color: white;
+  padding: 12px 20px;
+  border: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.body {
+    font-family: sans-serif;
+    background-color: lightpink;
+}
+
+</style>
+</head>
+<body>
+    <script>
+        function validateF1(){
+            var name = document.myform.name.value;
+            var phone = document.myform.phone.value;
+            var age=document.getElementById("age").value;
+            var em=document.getElementById("email").value.indexOf("@");
+            if (name==null || name==""){  
+                alert("Name is required");                  
+                return false;  
+            }if (isNaN(age) ||age<1||age>150){  
+                alert("Age must be between (1 - 150)");                  
+                return false;  
+            }else if(phone==null || phone==""){                  
+                alert("Phone number is required");  
+                return false;  
+            }else if (isNaN(phone)){  
+                //document.getElementById("numloc").innerHTML="Enter Numeric value only";  
+                alert("Enter Correct Phone Number");
+                return false;  
+            }else if (em==-1){
+                alert("Email-id is not valid!")
+            }else{
+                alert("Registration Successfull!!!");
+            }
+        }  
+           
+    </script>
+
+
+<h2 text-align="center">Travelers Sign Up Form</h2>
+
+
+<div class="container">
+  <form name="myform" action="signupdata.php" method="post" onsubmit="return validateF1()">
+    <label for="name">Name*</label>
+    <br>
+    <input type="text" id="name" name="Name" placeholder="Enter Your Full Name"><br>
+
+    <label for="age">Age*</label><br>
+    <input type="text" id="age" name="age" placeholder="Enter Your age"><br>
+
+
+    <label for="phone">Contact Number*</label><br>
+    <input type="tel" id="phone" name="phone" lenght="10" placeholder="Enter Your Contact Number"><br>
+
+
+    <label for="email">Email*</label><br>
+    <input type="email" id="email" name="email" placeholder="Enter your Email"><br>
+
+
+    <label for="Gender">Gender</label><br>
+    <select id="Gender" name="Gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="other">Other</option>
+    </select><br>
+
+
+    <label for="address">Address</label><br>
+    <textarea id="address" name="address" placeholder="Enter your address" style="height:200px"></textarea><br>
+
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+</body>
+</html>
